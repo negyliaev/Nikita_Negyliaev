@@ -8,5 +8,5 @@ Used Builder Design Pattern to build requests for each scenario (at RequestBuild
 
 
 Updated:
-1) UploadFile and DeleteFile tests are now checked by checking if file id is in folder by calling filelist request. 
+1) UploadFile and DeleteFile tests are now checked by checking if file id is in folder by calling file_list request. 
 2) Metadata response data is now checked with file name and path at dropbox. 
