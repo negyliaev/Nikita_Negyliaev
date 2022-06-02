@@ -122,6 +122,38 @@ namespace WebAPI
 
     }
 
+    class FolderList : RequestBuilder
+    {
+        public RestRequest Request = new RestRequest();
+
+        public override void SetAuth(string tokenType, string token)
+        {
+            Request.AddHeader("Authorization", tokenType + " " + token);
+        }
+
+        public override void SetBody(string folderPath)
+        {
+            Request.AddJsonBody(new { path = folderPath });
+        }
+
+        public override void SetHeaders(Dictionary<string, string> headers)
+        {
+            foreach (var header in headers)
+                Request.AddHeader(header.Key, header.Value);
+        }
+
+        public override void SetDefaultHeaders()
+        {
+            SetAuth(Config.tokenType, Config.token);
+        }
+
+        public override RestRequest GetRequest()
+        {
+            return this.Request;
+        }
+
+    }
+
 
 
 }
